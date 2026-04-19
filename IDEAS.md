@@ -99,7 +99,56 @@ Format: `[idea]` — `[why it's interesting]` — `[rough effort]` — `[risk le
 
 (Move items here when we start exploring data for them)
 
-- *[none yet]*
+### ⭐ Planetary birthday email list + YouTube notifications (added 2026-04-19)
+
+**Why this is in GROWING, not SEEDS:**
+Scored highest across the evaluation framework (user value HIGH, business value HIGH, feasibility MEDIUM, maintenance LOW). Birthday emails have industry-best open rates (~50%+). This is the single highest-leverage idea for converting one-off Parallax visitors into a persistent audience.
+
+**User experience:**
+- Signup form on Cosmic Birthday page + Parallax footer
+- User enters email + birth date + (optional) name
+- Receives a personalized "Happy Martian Birthday" / Mercury / Jupiter / etc. email on each planetary birthday
+- Plus: monthly curiosity digest + new YouTube video alerts
+- One-click unsubscribe (legally required)
+
+**The YouTube compound effect:**
+Every email includes a "New on YouTube" section auto-populated with Eddie's latest video. This bootstraps YouTube subscribers from email list. Two audiences, one flywheel.
+
+**Tech stack to build:**
+- Signup form on Parallax (30 min)
+- Database — users + birthdays + preferences (Railway Postgres or similar; need a backend — Parallax is currently pure-static)
+- Email service — **Resend** (3K emails/mo free; $20/mo at 50K); alternatives: Mailgun, SendGrid
+- Daily scheduler — cron checks each morning "whose planet birthday is today?" → queue emails
+- Email templates — branded HTML (4-8h design)
+- Unsubscribe handler + CAN-SPAM / GDPR compliance
+- Domain email "from" address (requires SPF/DKIM/DMARC setup — Resend walks through it)
+
+**Total build effort:** 20-40h across 2-3 weekends.
+
+**Ongoing cost:** $20-40/mo at 10K subscribers. Scheduler is zero-maintenance once running.
+
+**Deliverability note:**
+New email-sending domains get junk-foldered by Gmail for 4-8 weeks. Standard "email warm-up" protocol: start at 100/day, double weekly. Launch email volume must ramp slowly or all emails hit spam. Patience pays.
+
+**Ideal timing:**
+- **Now (Apr-early May):** Focus on YouTube launch + Reddit + AdSense. Don't build this yet.
+- **Mid-May:** IF Parallax is getting traffic, begin building.
+- **Late May:** Beta test with 50 friends/family.
+- **Early June:** Public launch.
+
+By summer, email + YouTube + SEO all compound together. Right timing.
+
+**Metrics to hit before building:**
+- Parallax traffic > 500 weekly visitors
+- At least one referral-traffic moment (Reddit/HN/viral YouTube video)
+- User interest signal (anyone asking for email updates, or direct feedback)
+
+If those don't materialize by mid-May, revisit whether it's worth the lift.
+
+**Eddie's mode on this one (user quote):**
+> "When the time comes, we'll just do it."
+
+Exactly right. Queue it, don't force it.
 
 ---
 
