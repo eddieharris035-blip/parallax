@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Old Would You Be on Mars, Jupiter, and Other Planets? — Parallax</title>
+  <meta name="description" content="Enter your birthday and instantly see how old you'd be on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto. With next-birthday dates on each planet.">
+  <link rel="canonical" href="/age-on-other-planets/">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <meta property="og:title" content="How old would you be on other planets?">
+  <meta property="og:description" content="Your age across the solar system, with next-birthday dates on every planet.">
+  <meta property="og:type" content="website">
+
+  <!-- [ADSENSE] verification script -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero tight">
+    <div class="container narrow fade-in">
+      <span class="tag">Age on Other Planets</span>
+      <h1>How old would you be <em>elsewhere</em>?</h1>
+      <p class="lede">Enter your birthday. See your age on every planet, plus the Earth-date of your next birthday on each one.</p>
+
+      <div class="field-group">
+        <div>
+          <label for="birth">Your birth date</label>
+          <input type="date" id="birth" max="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div id="results" class="hidden">
+        <div class="result-card fade-in">
+          <div class="age-label">on Earth, you are</div>
+          <div class="big-number" id="earthAge">—</div>
+          <div class="sub" id="earthSub">years old</div>
+        </div>
+
+        <div class="planet-grid" id="planetGrid"></div>
+      </div>
+
+      <!-- [ADSENSE] Ad slot: below results -->
+      <div class="ad-slot">[ Ad slot — paste your AdSense unit here ]</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container narrow">
+      <h2>How this works</h2>
+      <p>Your age on another planet is simply your age in Earth days divided by the length of that planet's year (its orbital period).</p>
+      <p>A year is just the time it takes a planet to travel once around the Sun. On Mercury that takes about <strong>88 Earth days</strong>. On Jupiter, almost <strong>12 Earth years</strong>. On Neptune, almost <strong>165 Earth years</strong>. So if you were born 30 Earth years ago, you've lived through roughly 125 Mercury years — but only 0.18 of a Neptune year.</p>
+
+      <h2>Orbital periods used</h2>
+      <ul>
+        <li><strong>Mercury</strong> — 0.241 Earth years (88 days)</li>
+        <li><strong>Venus</strong> — 0.615 Earth years (225 days)</li>
+        <li><strong>Earth</strong> — 1 year (365.25 days)</li>
+        <li><strong>Mars</strong> — 1.881 Earth years (687 days)</li>
+        <li><strong>Jupiter</strong> — 11.86 Earth years</li>
+        <li><strong>Saturn</strong> — 29.45 Earth years</li>
+        <li><strong>Uranus</strong> — 84.02 Earth years</li>
+        <li><strong>Neptune</strong> — 164.79 Earth years</li>
+        <li><strong>Pluto</strong> — 247.94 Earth years</li>
+      </ul>
+
+      <h2>Is your data saved?</h2>
+      <p>All calculation happens in your browser. Your birthday never leaves your device. We save the date in your browser's local storage so the other tools on this site can use it without asking twice — clear it any time from your browser settings.</p>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/cosmic-birthday/">Cosmic Birthday</a> — every upcoming planetary birthday on your calendar.</li>
+        <li><a href="/life-in-weeks/">Life in Weeks</a> — the weeks of your life, as a grid.</li>
+        <li><a href="/time-dust/">Time Dust</a> — years quietly spent on small things.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module">
+import { PLANETS, ORBITAL_YEARS, ageFromBirth, nextBirthdayOn, fmtDate, fmtSmart, parseDateInput, rememberBirth, recalledBirth } from "/assets/script.js";
+
+const birthInput = document.getElementById("birth");
+const results    = document.getElementById("results");
+const earthAgeEl = document.getElementById("earthAge");
+const earthSub   = document.getElementById("earthSub");
+const grid       = document.getElementById("planetGrid");
+
+// cap max to today
+birthInput.max = new Date().toISOString().slice(0, 10);
+
+// restore previous entry if any
+const saved = recalledBirth();
+if (saved) birthInput.value = saved;
+
+function render() {
+  const birthDate = parseDateInput(birthInput.value);
+  if (!birthDate) { results.classList.add("hidden"); return; }
+
+  rememberBirth(birthDate);
+  const { days, earthYears } = ageFromBirth(birthDate);
+
+  earthAgeEl.textContent = fmtSmart(earthYears);
+  earthSub.textContent   = `${Math.floor(days).toLocaleString()} days since you arrived`;
+
+  grid.innerHTML = "";
+  for (const p of PLANETS) {
+    const planetYears = earthYears / ORBITAL_YEARS[p.key];
+    const nextBday    = nextBirthdayOn(p.key, birthDate);
+    const card = document.createElement("div");
+    card.className = "planet-card fade-in";
+    card.innerHTML = `
+      <div class="planet-head">
+        <span class="planet ${p.key}"></span>
+        <div>
+          <div class="planet-name">${p.name}</div>
+          <div class="age-label">your age</div>
+        </div>
+      </div>
+      <div class="age-big">${fmtSmart(planetYears)}</div>
+      <div class="age-label">${p.key} years old</div>
+      <div class="next-bday">Your next ${p.name} birthday<strong>${fmtDate(nextBday)}</strong></div>
+      <div class="fact">${p.fact}</div>
+    `;
+    grid.appendChild(card);
+  }
+  results.classList.remove("hidden");
+}
+
+birthInput.addEventListener("input", render);
+render();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

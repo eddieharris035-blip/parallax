@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Life in Weeks — Parallax</title>
+  <meta name="description" content="See every week of an average human life as a grid of small squares. One row per year. Every square you've lived, every square you have left.">
+  <link rel="canonical" href="/life-in-weeks/">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <meta property="og:title" content="Your Life in Weeks — Parallax">
+  <meta property="og:description" content="An average life is about 4,000 weeks. Here's yours.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero tight">
+    <div class="container narrow fade-in">
+      <span class="tag">Life in Weeks</span>
+      <h1>Your life, <em>week by week</em>.</h1>
+      <p class="lede">Every row is a year. Every square is a week. Enter your birthday and see how much of the grid you've filled — and how much is still blank.</p>
+
+      <div class="field-group">
+        <div>
+          <label for="birth">Your birth date</label>
+          <input type="date" id="birth">
+        </div>
+        <div>
+          <label for="lifespan">Expected lifespan</label>
+          <select id="lifespan">
+            <option value="80">80 years (rough average)</option>
+            <option value="90" selected>90 years (Tim Urban's original)</option>
+            <option value="100">100 years (optimistic)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div id="summary" class="result-card hidden">
+        <div class="age-label">you've lived</div>
+        <div class="big-number" id="weeksLived">—</div>
+        <div class="sub"><span id="weeksLivedSub">—</span> · <span id="weeksRemaining">—</span></div>
+      </div>
+
+      <div class="weeks-wrap hidden" id="weeksWrap">
+        <div class="weeks-legend">
+          <span><span class="legend-box legend-lived"></span> Weeks lived</span>
+          <span><span class="legend-box legend-remaining"></span> Weeks remaining</span>
+          <span>Each row = 1 year · Each square = 1 week</span>
+        </div>
+        <div class="weeks-grid" id="weeksGrid"></div>
+      </div>
+
+      <!-- [ADSENSE] Ad slot: below grid -->
+      <div class="ad-slot">[ Ad slot — paste your AdSense unit here ]</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container narrow">
+      <h2>Why weeks?</h2>
+      <p>Tim Urban popularized this view in a 2014 essay: a human life, if it lasts 90 years, is about <strong>4,680 weeks</strong>. When you see them all laid out at once, time stops feeling infinite.</p>
+      <p>Some weeks feel slow. Some years feel fast. But the squares don't lie — they stay the same size.</p>
+
+      <h2>Is this morbid?</h2>
+      <p>That's up to you. Most people find it clarifying rather than sad — a nudge to notice which squares they're filling with what.</p>
+
+      <h2>Privacy</h2>
+      <p>Everything runs in your browser. Your birth date is not sent anywhere. It's stored locally so our other tools can use it too — clear it anytime in your browser settings.</p>
+
+      <h2>Related</h2>
+      <ul>
+        <li><a href="/age-on-other-planets/">Age on Other Planets</a> — the same life, in alien units.</li>
+        <li><a href="/time-dust/">Time Dust</a> — where the weeks actually went.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module">
+import { parseDateInput, rememberBirth, recalledBirth, fmtSmart } from "/assets/script.js";
+
+const birthInput  = document.getElementById("birth");
+const lifespanSel = document.getElementById("lifespan");
+const summary     = document.getElementById("summary");
+const wrap        = document.getElementById("weeksWrap");
+const weeksLived  = document.getElementById("weeksLived");
+const livedSub    = document.getElementById("weeksLivedSub");
+const remaining   = document.getElementById("weeksRemaining");
+const grid        = document.getElementById("weeksGrid");
+
+birthInput.max = new Date().toISOString().slice(0, 10);
+const saved = recalledBirth();
+if (saved) birthInput.value = saved;
+
+function render() {
+  const birth = parseDateInput(birthInput.value);
+  if (!birth) { summary.classList.add("hidden"); wrap.classList.add("hidden"); return; }
+  rememberBirth(birth);
+
+  const lifeYears = parseInt(lifespanSel.value, 10);
+  const totalWeeks = lifeYears * 52;
+  const weeksAlive = Math.floor((Date.now() - birth.getTime()) / (7 * 86400000));
+  const cappedAlive = Math.min(weeksAlive, totalWeeks);
+  const weeksLeft = Math.max(0, totalWeeks - cappedAlive);
+
+  weeksLived.textContent   = cappedAlive.toLocaleString();
+  livedSub.textContent     = `${Math.round(100 * cappedAlive / totalWeeks)}% of a ${lifeYears}-year life`;
+  remaining.textContent    = `${weeksLeft.toLocaleString()} weeks remain`;
+
+  grid.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < totalWeeks; i++) {
+    const w = document.createElement("div");
+    w.className = "week";
+    if (i < cappedAlive - 1) w.classList.add("lived");
+    else if (i === cappedAlive - 1) w.classList.add("current");
+    frag.appendChild(w);
+  }
+  grid.appendChild(frag);
+
+  summary.classList.remove("hidden");
+  wrap.classList.remove("hidden");
+}
+
+birthInput.addEventListener("input", render);
+lifespanSel.addEventListener("change", render);
+render();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

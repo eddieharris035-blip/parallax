@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cosmic Birthday — When's Your Next Birthday on Every Planet? — Parallax</title>
+  <meta name="description" content="Your next birthday on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto — with exact Earth dates and how many days until each one.">
+  <link rel="canonical" href="/cosmic-birthday/">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <meta property="og:title" content="Cosmic Birthday — Your next birthday on every planet">
+  <meta property="og:description" content="The exact Earth date of your next birthday on Mercury, Mars, Jupiter, and beyond.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero tight">
+    <div class="container narrow fade-in">
+      <span class="tag">Cosmic Birthday</span>
+      <h1>When's your <em>next</em> birthday — on every planet?</h1>
+      <p class="lede">Each planet has its own year. Each year has its own birthday. Here's the next date a new Mercury / Mars / Saturn year starts for you.</p>
+
+      <div class="field-group">
+        <div>
+          <label for="birth">Your birth date</label>
+          <input type="date" id="birth">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div id="upcoming" class="planet-grid hidden"></div>
+
+      <!-- [ADSENSE] Ad slot: below list -->
+      <div class="ad-slot">[ Ad slot — paste your AdSense unit here ]</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container narrow">
+      <h2>How we find each date</h2>
+      <p>Your age on a planet is your age in days divided by that planet's orbital period. The next whole planetary year completes at <code>birth + (floor(age_on_planet) + 1) × orbital_period</code>. We convert that back into an Earth date.</p>
+      <p>Mercury birthdays come around every 88 days — so if you haven't had one this quarter, you're overdue. Pluto is the rarest: most humans get exactly one.</p>
+
+      <h2>Why celebrate?</h2>
+      <p>Every excuse to celebrate is a good one. Put your next Mars birthday on your calendar — it's unlikely any of your friends have ever marked one.</p>
+
+      <h2>Related</h2>
+      <ul>
+        <li><a href="/age-on-other-planets/">Age on Other Planets</a> — how old are you on each one.</li>
+        <li><a href="/life-in-weeks/">Life in Weeks</a> — all your Earth birthdays, visualized.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module">
+import { PLANETS, nextBirthdayOn, fmtDate, parseDateInput, rememberBirth, recalledBirth } from "/assets/script.js";
+
+const birthInput = document.getElementById("birth");
+const list       = document.getElementById("upcoming");
+
+birthInput.max = new Date().toISOString().slice(0, 10);
+const saved = recalledBirth();
+if (saved) birthInput.value = saved;
+
+function render() {
+  const birth = parseDateInput(birthInput.value);
+  if (!birth) { list.classList.add("hidden"); return; }
+  rememberBirth(birth);
+
+  // Compute next birthday for every planet + sort chronologically so the soonest is first
+  const rows = PLANETS.map(p => {
+    const d = nextBirthdayOn(p.key, birth);
+    const daysAway = Math.ceil((d.getTime() - Date.now()) / 86400000);
+    return { p, d, daysAway };
+  }).sort((a, b) => a.d - b.d);
+
+  list.innerHTML = "";
+  for (const { p, d, daysAway } of rows) {
+    const card = document.createElement("div");
+    card.className = "planet-card fade-in";
+    const urgency = daysAway <= 30 ? "soon" : daysAway <= 365 ? "this year" : daysAway <= 365 * 5 ? "a few years out" : "far future";
+    card.innerHTML = `
+      <div class="planet-head">
+        <span class="planet ${p.key}"></span>
+        <div>
+          <div class="planet-name">${p.name}</div>
+          <div class="age-label">${urgency}</div>
+        </div>
+      </div>
+      <div class="age-big" style="font-size:1.5rem;">${fmtDate(d)}</div>
+      <div class="age-label">${daysAway.toLocaleString()} days from today</div>
+      <div class="fact">${p.fact}</div>
+    `;
+    list.appendChild(card);
+  }
+  list.classList.remove("hidden");
+}
+
+birthInput.addEventListener("input", render);
+render();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

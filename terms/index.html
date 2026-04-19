@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of Use — Parallax</title>
+  <meta name="description" content="The short, friendly legal terms for using Parallax.">
+  <link rel="canonical" href="/terms/">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero tight">
+    <div class="container narrow">
+      <span class="tag">Terms</span>
+      <h1>Terms of Use</h1>
+      <p class="lede">Last updated: <span id="today"></span>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Using the site</h2>
+      <p>Parallax is free to use for personal curiosity. You're welcome to use the calculators, share the links, and include the results in your own writing with attribution.</p>
+
+      <h2>No warranty</h2>
+      <p>These calculators are built for fun and perspective, not for precision. Orbital periods are standard sidereal averages; results are rounded. Nothing here is medical, legal, financial, or actuarial advice, and none of it should be used to make serious decisions about your health, money, or mortality.</p>
+      <p>The site is provided "as is," without warranty of any kind, express or implied.</p>
+
+      <h2>Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, Parallax and its maintainers are not liable for any direct, indirect, incidental, or consequential damages arising out of your use of the site.</p>
+
+      <h2>Acceptable use</h2>
+      <p>You agree not to: (a) attempt to disrupt or compromise the site; (b) scrape the site aggressively; (c) reproduce the site as a whole and present it as your own work.</p>
+
+      <h2>Intellectual property</h2>
+      <p>The design, copy, and code of Parallax belong to us. The underlying science (planetary orbits, day lengths) is public domain. Linking to the site is always welcome.</p>
+
+      <h2>Third parties</h2>
+      <p>This site displays ads via Google AdSense. Google's terms and privacy policy apply to their services — see the <a href="/privacy/">Privacy Policy</a> for links.</p>
+
+      <h2>Changes</h2>
+      <p>We may update these terms. Material changes will be noted at the top and, for big changes, on the homepage for 30 days. Continuing to use the site after a change constitutes acceptance.</p>
+
+      <h2>Contact</h2>
+      <p>Questions? <a href="/contact/">Send a note</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("today").textContent = new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+</script>
+</body>
+</html>

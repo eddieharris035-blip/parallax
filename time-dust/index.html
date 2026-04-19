@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time Dust — Where Did the Years Go? — Parallax</title>
+  <meta name="description" content="Sleep, phone, commute, meals. Enter your daily habits and see how many years of your life they've quietly consumed.">
+  <link rel="canonical" href="/time-dust/">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <meta property="og:title" content="Time Dust — Where Did the Years Go?">
+  <meta property="og:description" content="The years quietly slip into small corners. Find out how many.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero tight">
+    <div class="container narrow fade-in">
+      <span class="tag">Time Dust</span>
+      <h1>Where do the <em>years</em> go?</h1>
+      <p class="lede">A year slips away one small habit at a time. Tell us what an average day looks like and see the real toll.</p>
+
+      <div class="field-group">
+        <div>
+          <label for="birth">Your birth date</label>
+          <input type="date" id="birth">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container narrow">
+      <div id="sliders" class="hidden">
+        <div class="slider-row">
+          <label for="sleep">Sleep</label>
+          <input type="range" id="sleep" min="4" max="12" step="0.5" value="8">
+          <span class="val" id="sleepVal">8 hr/day</span>
+        </div>
+        <div class="slider-row">
+          <label for="phone">Phone / screen</label>
+          <input type="range" id="phone" min="0" max="12" step="0.5" value="3.5">
+          <span class="val" id="phoneVal">3.5 hr/day</span>
+        </div>
+        <div class="slider-row">
+          <label for="commute">Commute</label>
+          <input type="range" id="commute" min="0" max="5" step="0.25" value="0.75">
+          <span class="val" id="commuteVal">0.75 hr/day</span>
+        </div>
+        <div class="slider-row">
+          <label for="eat">Eating</label>
+          <input type="range" id="eat" min="0" max="4" step="0.25" value="1.25">
+          <span class="val" id="eatVal">1.25 hr/day</span>
+        </div>
+        <div class="slider-row">
+          <label for="work">Work / school</label>
+          <input type="range" id="work" min="0" max="14" step="0.5" value="8">
+          <span class="val" id="workVal">8 hr/day</span>
+        </div>
+        <div class="slider-row">
+          <label for="wait">Waiting / queues</label>
+          <input type="range" id="wait" min="0" max="3" step="0.25" value="0.5">
+          <span class="val" id="waitVal">0.5 hr/day</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="dust-grid" id="dustGrid"></div>
+
+      <!-- [ADSENSE] Ad slot: below breakdown -->
+      <div class="ad-slot">[ Ad slot — paste your AdSense unit here ]</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container narrow">
+      <h2>How this is calculated</h2>
+      <p>We take your age in days, multiply each daily habit in hours, and convert the total back to years. It assumes the pattern stays roughly constant — nobody sleeps exactly 8 hours every night since birth, so these are rough strokes, not clinical estimates.</p>
+      <p>The goal isn't precision. It's perspective.</p>
+
+      <h2>Privacy</h2>
+      <p>Everything is calculated in your browser. Nothing is sent anywhere.</p>
+
+      <h2>Related</h2>
+      <ul>
+        <li><a href="/life-in-weeks/">Life in Weeks</a> — your life as a grid of small squares.</li>
+        <li><a href="/age-on-other-planets/">Age on Other Planets</a> — same age, alien units.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module">
+import { parseDateInput, rememberBirth, recalledBirth, fmtSmart, ageFromBirth } from "/assets/script.js";
+
+const birthInput = document.getElementById("birth");
+const sliders    = document.getElementById("sliders");
+const grid       = document.getElementById("dustGrid");
+
+const activities = [
+  { key: "sleep",   name: "Sleep",         sub: "rem cycles, dreams, static" },
+  { key: "phone",   name: "Phone / screen", sub: "scrolling, streams, tabs" },
+  { key: "commute", name: "Commute",        sub: "stuck between places" },
+  { key: "eat",     name: "Eating",         sub: "meals, snacks, coffees" },
+  { key: "work",    name: "Work / school",  sub: "on the clock" },
+  { key: "wait",    name: "Waiting",        sub: "queues, lines, holds" },
+];
+
+birthInput.max = new Date().toISOString().slice(0, 10);
+const saved = recalledBirth();
+if (saved) birthInput.value = saved;
+
+function unitLabel(hoursPerDay, id) {
+  document.getElementById(id + "Val").textContent = `${hoursPerDay} hr/day`;
+}
+
+function render() {
+  const birth = parseDateInput(birthInput.value);
+  if (!birth) { sliders.classList.add("hidden"); grid.innerHTML = ""; return; }
+  rememberBirth(birth);
+  sliders.classList.remove("hidden");
+
+  const { days, earthYears } = ageFromBirth(birth);
+  const yearsPerHourPerDay = days / (365.25 * 24); // 1 hr/day over your lifetime = this many years
+
+  grid.innerHTML = "";
+  for (const a of activities) {
+    const hours = parseFloat(document.getElementById(a.key).value);
+    unitLabel(hours, a.key);
+    const yearsSpent = hours * yearsPerHourPerDay;
+    const pctLife = 100 * yearsSpent / earthYears;
+    const card = document.createElement("div");
+    card.className = "dust-card";
+    card.innerHTML = `
+      <h4>${a.name}</h4>
+      <div class="years">${fmtSmart(yearsSpent)} <span style="font-size:0.9rem;color:var(--text-muted);font-family:var(--font-sans);">years</span></div>
+      <div class="sub">${pctLife.toFixed(1)}% of your life · ${a.sub}</div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+birthInput.addEventListener("input", render);
+for (const a of activities) {
+  document.getElementById(a.key).addEventListener("input", render);
+}
+render();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

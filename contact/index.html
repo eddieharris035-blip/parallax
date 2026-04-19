@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Parallax</title>
+  <meta name="description" content="Send Parallax a note — ideas, corrections, or just a hello.">
+  <link rel="canonical" href="/contact/">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero tight">
+    <div class="container narrow">
+      <span class="tag">Contact</span>
+      <h1>Say <em>hello</em>.</h1>
+      <p class="lede">Got a new calculator idea? A bug? A correction? A compliment? All welcome.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Email us</h2>
+      <p>The quickest way to reach us is email:</p>
+      <p style="font-family:var(--font-mono);font-size:1.1rem;"><a id="mail" href="#">hello@&lt;your-domain&gt;</a></p>
+      <p class="muted" style="font-size:0.9rem;">Replace <code>&lt;your-domain&gt;</code> with your live domain once the site is deployed. We reply from a human, usually within a few days.</p>
+
+      <h2>What to include</h2>
+      <ul>
+        <li><strong>Bugs:</strong> the page you were on, the browser you used, and what went wrong.</li>
+        <li><strong>Ideas:</strong> a one-line description of the calculator you'd want to see.</li>
+        <li><strong>Corrections:</strong> the page and the specific number or claim you think is off, with a source if you have one.</li>
+      </ul>
+
+      <h2>Not urgent? Try the tools.</h2>
+      <p><a href="/age-on-other-planets/">Age on Other Planets</a> · <a href="/life-in-weeks/">Life in Weeks</a> · <a href="/time-dust/">Time Dust</a> · <a href="/cosmic-birthday/">Cosmic Birthday</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

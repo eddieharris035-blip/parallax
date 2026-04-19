@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Parallax</title>
+  <meta name="description" content="How Parallax handles your data. Short answer: we don't collect any, but our ad partner (Google) does.">
+  <link rel="canonical" href="/privacy/">
+  <link rel="stylesheet" href="/assets/style.css">
+  <meta name="robots" content="index,follow">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero tight">
+    <div class="container narrow">
+      <span class="tag">Privacy</span>
+      <h1>Privacy Policy</h1>
+      <p class="lede">Last updated: <span id="today"></span>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Plain-English summary</h2>
+      <p>We don't collect personal information. Everything you enter into the calculators (birth dates, hours, etc.) is processed entirely in your browser and stored only on your device. We don't run analytics. The one exception: Google AdSense, which shows the ads on this site, may place cookies and collect information as described below.</p>
+
+      <h2>Information we collect</h2>
+      <p><strong>From you directly:</strong> none. We don't ask for an email, name, or account. There are no sign-ups.</p>
+      <p><strong>Stored on your device:</strong> the calculators use your browser's <em>localStorage</em> to remember the birth date you entered, so you don't have to retype it when moving between tools. This stays on your device. Clearing your browser's site data removes it.</p>
+      <p><strong>From the server:</strong> standard web-server logs (IP address, user agent, requested URL, timestamp) may be kept briefly by our hosting provider. These are not linked to any identity by us.</p>
+
+      <h2>Google AdSense and advertising cookies</h2>
+      <p>We use Google AdSense to display ads. Google and its partners may use cookies and similar technologies to serve ads based on your prior visits to this site or other sites on the web.</p>
+      <ul>
+        <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visits to this and other sites.</li>
+        <li>You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" rel="noopener">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" rel="noopener">aboutads.info</a>.</li>
+        <li>For more information on how Google uses data: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>This site does not set its own tracking cookies. Cookies set by Google AdSense are covered by Google's own privacy policy, linked above. If you are in a region where cookie consent is required (EU/UK/CA), a consent notice will be shown on first visit.</p>
+
+      <h2>Children's privacy</h2>
+      <p>Parallax is not directed to children under 13, and we do not knowingly collect information from them. If you believe a child has provided information here, please contact us.</p>
+
+      <h2>Your rights</h2>
+      <p>Because we don't store personal information on our side, there is nothing for us to access, correct, or delete. You can clear your device's data at any time via your browser settings. Requests related to data processed by Google AdSense should be directed to Google.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If this policy changes, we'll update the date at the top. Material changes will be noted on the homepage for at least 30 days.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy? <a href="/contact/">Get in touch</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("today").textContent = new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+</script>
+</body>
+</html>

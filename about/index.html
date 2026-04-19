@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Parallax</title>
+  <meta name="description" content="Parallax is a small hub of curiosity calculators — perspective shifts in your browser.">
+  <link rel="canonical" href="/about/">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark"></span><span>Parallax</span></a>
+    <nav class="nav">
+      <a href="/age-on-other-planets/">Age on Planets</a>
+      <a href="/life-in-weeks/">Life in Weeks</a>
+      <a href="/time-dust/">Time Dust</a>
+      <a href="/cosmic-birthday/">Cosmic Birthday</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero tight">
+    <div class="container narrow fade-in">
+      <span class="tag">About</span>
+      <h1>A small shift changes <em>everything</em>.</h1>
+      <p class="lede">Parallax is a hub of tiny, beautifully simple calculators for the questions you'd Google but wish had a prettier home.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>What this site is</h2>
+      <p>Parallax is a small collection of free, ad-supported web calculators. Each tool answers one curiosity — how old you'd be on Mars, what an average life looks like as a grid of weeks, where your years have quietly gone.</p>
+
+      <h2>How it's built</h2>
+      <p>Every tool runs entirely in your browser. No accounts, no backend, no tracking. The site is plain HTML, CSS, and a small amount of JavaScript — it loads instantly and works offline once you've visited a page.</p>
+
+      <h2>How it's paid for</h2>
+      <p>Parallax shows display ads from Google AdSense. That's the only way it's funded. If you'd like to support the site without buying anything, turning off your ad blocker here helps.</p>
+
+      <h2>Who made it</h2>
+      <p>A small team of two, making tools we wanted to use ourselves. Questions or suggestions? <a href="/contact/">Send us a note</a>.</p>
+
+      <h2>Credits</h2>
+      <p>The "life in weeks" idea originates with <a href="https://waitbutwhy.com/2014/05/life-weeks.html" rel="noopener">Tim Urban's 2014 essay</a>. Orbital periods are standard sidereal values; day lengths are planetary averages.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> Parallax. Made with curiosity.</div>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
