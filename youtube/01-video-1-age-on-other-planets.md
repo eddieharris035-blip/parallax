@@ -98,8 +98,12 @@ Tell me in the comments: how old are you on Mars? How about Pluto?
 
 More tools at https://parallax-phi-ten.vercel.app
 
+🏠 This channel is sponsored by Easy Smart Home HQ — honest reviews of smart home gear. Launching soon: easysmarthomehq.com
+
 #parallax #solarsystem #mars #astronomy #curiosity #calculator
 ```
+
+**⚠️ UPLOAD SETTING:** Check the "Paid promotion" box when uploading (Details tab → "This video contains paid promotion"). Required for self-sponsorship disclosure.
 
 ---
 

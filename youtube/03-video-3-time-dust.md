@@ -77,6 +77,8 @@ How much have you spent scrolling? Tell me in the comments.
 
 More tools at https://parallax-phi-ten.vercel.app
 
+🏠 This channel is sponsored by Easy Smart Home HQ — honest reviews of smart home gear. Launching soon: easysmarthomehq.com
+
 #timemanagement #phoneaddiction #parallax #perspective #habits
 ```
 

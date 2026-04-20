@@ -99,6 +99,81 @@ Format: `[idea]` — `[why it's interesting]` — `[rough effort]` — `[risk le
 
 (Move items here when we start exploring data for them)
 
+### ⭐⭐ Cross-promotion: Easy Smart Home HQ sponsors Parallax YouTube (added 2026-04-20)
+
+**Why this is GROWING tier:**
+Two-brand funnel that turns Parallax's curiosity-audience into Smart Home's buyer-audience. Affiliate commissions (Amazon 4% on $50-300 products) monetize way better than AdSense on curiosity traffic. Parallax = top-of-funnel; YouTube = distribution; Smart Home = monetization engine.
+
+**The architecture:**
+```
+                    YouTube Shorts (Orion-style)
+                            |
+                   ┌────────┴────────┐
+                   ▼                 ▼
+            Parallax videos     Smart Home videos
+            (curiosity hooks)   (buying guides)
+                   |                 |
+                   ▼                 ▼
+         parallax-phi-ten.      easysmarthomehq.com
+         vercel.app             (to be built)
+                   |                 |
+                   ▼                 ▼
+              AdSense $$           Amazon 4% $$$$
+```
+
+Parallax traffic also gets FUNNELED to Smart Home via:
+- End-of-video sponsor reads (5 sec each)
+- Description-line links on every Parallax video
+- Topic-matched tie-ins (Time Dust → digital wellness products; Cosmic Birthday → Echo Show calendar; Life in Weeks → air quality/sleep tech)
+
+**Revenue projection (month 6, realistic):**
+| Source | Monthly |
+|---|---|
+| Parallax AdSense (10K visitors) | $50-200 |
+| Parallax YouTube ads (if monetized) | $50-150 |
+| **Smart Home affiliate (500 buyers × $8 avg commission)** | **$500-2,000** |
+| **Total** | **$600-2,350** |
+
+Smart Home revenue dominates because buying intent >> curiosity for conversion rate.
+
+**Rollout plan (phased):**
+- **Phase 1 (now → mid-May):** Ship 4 Parallax videos on schedule. Just add description-line placeholder: "Sponsored by Easy Smart Home HQ — launching soon at easysmarthomehq.com." Builds brand anticipation even before the site is live.
+- **Phase 2 (mid-May → mid-June):** Build Smart Home site (20-30 review articles, apply to Amazon Associates). Separate project — see `CLUDE TRADEING/smart-home/` folder once created.
+- **Phase 3 (late June+):** Once Smart Home has 10+ real reviews live, upgrade Parallax video outros to include 5-sec end-of-video sponsor reads. Use topic-matched tie-ins where the product naturally fits the video's emotional hook.
+
+**Sponsor read templates (pre-drafted, ready to use when Phase 3 starts):**
+
+*Generic outro (any video):*
+> "Sponsored by Easy Smart Home HQ — the honest reviews site for smart home gear. Link below."
+
+*Time Dust tie-in (digital wellness angle):*
+> "If this video hit too close to home — we review screen-free alarm clocks and bedroom tech that gets your phone out of arm's reach. EasySmartHomeHQ.com."
+
+*Cosmic Birthday tie-in (voice assistants/calendar):*
+> "Put your next Mars birthday on an Echo Show — we review the best smart displays at EasySmartHomeHQ.com."
+
+*Life in Weeks tie-in (quality-of-life angle):*
+> "If this video made you want to reclaim some time — the best smart home gear that actually makes life better. EasySmartHomeHQ.com."
+
+*Age on Other Planets (most generic — use if no natural fit):*
+> "If you're curious about the future — we review the smart home tech that's already here. EasySmartHomeHQ.com."
+
+**Legal / compliance checklist:**
+- ✅ FTC sponsor disclosure (in description and/or video audio)
+- ✅ YouTube "Paid promotion" checkbox on upload (even for self-sponsorship)
+- ✅ Amazon Associates disclosure on every Smart Home page linking to Amazon ("As an Amazon Associate I earn from qualifying purchases")
+- ✅ Honest product claims (don't say things work if they don't)
+
+**Why self-sponsorship is fine (and common):**
+MrBeast → Feastables. MKBHD → MKBHD Shop. Casey Neistat → Beme. Creators owning the sponsor is best-case scenario: zero conflict of interest, full alignment on what gets recommended, full revenue capture.
+
+**User's mode (2026-04-20):**
+> "Let's save it to ideas. And let's get the other two projects running. In this way, we can add that down the road and it will easily mesh and work for us."
+
+Right call. Ship sequentially, don't overload.
+
+---
+
 ### ⭐ Planetary birthday email list + YouTube notifications (added 2026-04-19)
 
 **Why this is in GROWING, not SEEDS:**

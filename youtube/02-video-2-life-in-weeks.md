@@ -74,6 +74,8 @@ How many weeks have you lived? What percent of your grid is filled?
 
 Explore more curiosity tools at https://parallax-phi-ten.vercel.app
 
+🏠 This channel is sponsored by Easy Smart Home HQ — honest reviews of smart home gear. Launching soon: easysmarthomehq.com
+
 #lifeinweeks #timurban #timemanagement #perspective #parallax
 ```
 
