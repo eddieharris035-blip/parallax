@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://parallax-phi-ten.vercel.app/sitemap.xml
+Sitemap: https://parallaxhub.app/sitemap.xml
