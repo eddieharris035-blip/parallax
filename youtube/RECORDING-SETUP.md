@@ -56,6 +56,23 @@ If the audio is muddy or quiet, open OBS → Settings → Audio → Sample Rate 
 
 ---
 
+## ⚠️ 2026-04-22 lessons learned (before Saturday 4/26 record day)
+
+**OBS Canvas + recording settings didn't match last night's target.** Test files in C:\Users\Eddie\Videos came out at:
+- **1280×720** (horizontal) — wanted 1080×1920 (vertical)
+- **30 fps** — wanted 60 fps
+
+On Saturday before recording, re-verify in OBS:
+1. Settings → Video → **Base (Canvas) Resolution: 1080×1920**
+2. Settings → Video → **Output (Scaled) Resolution: 1080×1920**
+3. Settings → Video → **Common FPS Values: 60**
+4. Settings → Output → Recording → **Recording Format: MKV** (NOT MP4 — OBS MP4s have fragmentation that CapCut rejects)
+5. After recording in MKV, use OBS menu **File → Remux Recordings** → converts to MP4 cleanly for CapCut import.
+
+**CapCut import symptom if OBS is wrong:** audio imports fine, video track silently dropped. No error shown.
+
+---
+
 ## Step 2 — Install CapCut (free video editor)
 
 CapCut is the fastest editor for Shorts. Used by every major creator.

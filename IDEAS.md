@@ -78,6 +78,68 @@ Format: `[idea]` — `[why it's interesting]` — `[rough effort]` — `[risk le
 - **"Planet-of-the-Month" subscription box** — $20/mo, themed items (Mars month gets red rocks, etc.) — 100h+ to set up + ongoing ops — HIGH (physical fulfillment is a different business)
 - **Paid "Pro" tier** — Export all calculations as PDF, custom theming, no ads, API access — 40h — MEDIUM (needs auth infra)
 
+### Digital products (added 2026-05-01 by user, morning brainstorm)
+
+**Why digital products fit Parallax specifically:** Brand creates personal artifacts — your age on Mars, your weeks remaining — that translate naturally to printables, posters, templates. Margin profile is way better than ads (~$15-25 per unit vs $0.001 per ad impression). Zero inventory, instant delivery, design-once-sell-forever. Diversifies revenue beyond AdSense (which can be banned anytime).
+
+**Strongest candidates (build in this order):**
+- **"My Life in Weeks" printable poster** ⭐ HIGHEST FIT — Personalized PDF: user's 4,680-week grid with their birthday baked in + "this week" highlighted. Tim Urban's original article spawned dozens of these on Etsy; Parallax can dominate with the brand + tool ecosystem. **$15-25. 10-15h.**
+- **Cosmic perspective journal (printable PDF)** — Pairs with the poster. Guided journal with weekly reflection prompts ("How did you spend last week's box?"). **$10-15. 8-12h.**
+- **"Years on Every Planet" printable birthday card** — Fill-in-the-blank planetary birthday card for nerdy gift-giving. **$5-10. 4-6h.**
+- **Notion template — Life in Weeks tracker** — Auto-calculates remaining weeks, hosts year-by-year reflections. Notion templates sell well on Gumroad. **$20-30. 8-12h.**
+
+**Stretch candidates (only after first product validates):**
+- **"Cosmic Time" e-book** — 30-50 page deep dive on time perspective + planetary scales + mortality math. **$9-15. 40-60h.**
+- **Course: "Recompute Your Life"** — 4-week video course teaching the Parallax framework. **$50-150. 80-120h.** (Heavy lift — needs real audience.)
+- **Milestone PDF generator pack** — bundle of personalized "how old will you be when X" PDFs. **$10. 6-8h.**
+
+**Sequencing rules (CRITICAL — do not skip):**
+1. **Audience first, product second.** Classic trap: spend 3 months on a perfect Notion template, launch to 100 followers, sell 2 copies, get demoralized. Never build the product BEFORE the audience.
+2. **Email list is the prerequisite.** Warm email list converts 2-5%+; cold ads to strangers eat margin. Until the email list infrastructure (already in GROWING tier) ships, digital products won't have a working sales channel.
+3. **One product first.** Don't launch a portfolio. Pick ONE (the Life-in-Weeks poster), validate with real revenue, THEN expand.
+4. **Threshold to start building:** email list > 500 subscribers OR a single Parallax tool seeing > 1k weekly users (whichever first).
+
+**Storefront when ready:** **Gumroad first** (fastest validation, 10% fee, handles tax/payments globally). Migrate to direct Stripe-on-parallaxhub.app later if revenue justifies the integration work.
+
+**Eddie's mode (2026-05-01):** *"I'm a get back to it when the time is right."* Logged. Don't force.
+
+### Merch / branded products (added 2026-04-26 by user)
+
+**Eddie's mode (2026-04-26):** "Maybe in the future when the channel is much bigger." Logged for revisit. NOT BEFORE 1K subscribers — below that, store management eats more time than it returns.
+
+**Setup approach when activated:**
+- Print-on-demand only (Printful, Bonfire, or Spring/Teespring) — zero inventory, zero upfront cost
+- Skip YouTube's official Merch Shelf for now (requires 10K subs + YPP) — link to external store from video descriptions
+- Designs MUST tie to specific moments/lines from videos. Generic "I love space" designs don't sell; quotable lines do.
+
+**Design seed list (from existing/planned scripts):**
+- **"I will not be attending my Neptune birthday"** tee — callback to long-form #1 closing line
+- **"0.22 Neptune years old"** mug — universal among under-50s on Earth
+- **Custom planet-age mug** — generated from user's birthday via Parallax tool ("Eddie · 149 Mercury years old · 19 Mars years")
+- **"Pluto's first year completes 2178"** tee — works as both nerd flex and conversation starter
+- **Planet-orbit pin/keychain set** — 9 minimal pins (one per planet + Pluto), sold individually or as a set
+- **"Same body. Same heartbeat. Different number."** poster — pulled from script's emotional beat
+- **Life-in-weeks blank journal** — pairs with the Life in Weeks tool; 90 rows of 52 weeks, hardback
+
+**Why merch fits Parallax specifically:** the brand creates personal artifacts. A user's actual Neptune age, their actual planetary birthdays — these are unique-to-them numbers that translate well to a printed item. Generic astronomy merch is saturated; personalized cosmic merch is rare.
+
+**Threshold to revisit:** 1K subs OR strong direct request signal in comments. Not before.
+
+### Branding / tagline (added 2026-04-26)
+
+**Eddie's first draft:** "Parallax. Change your perspective. Change your life."
+
+**Why iterate:** "change your life" is overused across self-help and fitness brands; doesn't lean into what makes "parallax" a unique word. The astronomy term literally means *the apparent shift of an object's position when viewed from different vantage points* — that physics meaning is the brand's hidden gift, and any tagline should exploit it.
+
+**Refined options to revisit:**
+- **"Parallax. See yourself from somewhere else."** ← Orion's pick — literal (your age on Mars), poetic (perspective shift), uniquely tied to the calculator concept
+- "Parallax. Your life, from a different angle."
+- "Parallax. A new view of your time."
+- "Parallax. Step back. See more."
+- "Parallax. The universe, scaled to you."
+
+**When to lock it in:** Once a tagline is added to logo/banner/end screens it's expensive to change (creative + reuploads). Defer until either (a) channel hits 1K subs and we're refreshing brand assets anyway, or (b) a single tagline obviously stands out after 4+ videos of testing it in outros.
+
 ### Platform / tech expansions
 
 - **iOS / Android native app** — Reskin of Parallax + push notifications ("Your Mars birthday is tomorrow!") — 80-120h (React Native) — MEDIUM (app store approval, ongoing maintenance)
@@ -252,6 +314,50 @@ Exactly right. Queue it, don't force it.
 
 ---
 
+## 📋 POST-PARALLAX PROJECTS (separate sites — not Parallax features)
+
+Project queue for when Parallax + Smart Home are stable and Eddie has bandwidth for a new build.
+
+### Tier 3 — Pet Tools Hub (added 2026-04-24)
+
+**Concept:** Fork the Parallax codebase → new static calculator hub in the pet niche. NOT another dog-age/BMI calculator (saturated — 7+ incumbents on page 1). Instead: breed-specific or life-stage-specific tools the incumbents skipped.
+
+**Why this niche won the 2026-04-24 Home/DIY vs Pet analysis:**
+- **Affiliate economics 5-10x better:** Holistapet 35% commission, Ollie $60 flat per order vs Amazon's 4% on home gear
+- **Shareability:** Pet owners share cute tools aggressively; nobody forwards a paint calculator
+- **Market tailwind:** $250B → $370B projected 2023-2030
+- **Aesthetic fit:** Eddie's Parallax "curiosity + fun" design sensibility translates directly; dies on utilitarian home calcs
+- **AdSense signal:** solo creator reported $700-900/mo from a "funny dog website" (not even a tool site)
+
+**What we parked (Home/DIY):**
+- Tempting because of Smart Home cross-promo, but: Amazon 4% on $30-300 gear = $1.20-12/sale vs $60 Ollie flat. Math doesn't compete.
+- HammerIO + HomeWyse + Build-Folio + NerdWallet own the obvious tools. Local ZIP-code pricing data is expensive to replicate.
+- Could revisit as a "Tools" subdirectory INSIDE easysmarthomehq.com later (single domain = better SEO than parallel sister site).
+
+**Build wedge ideas (underserved tools the incumbents skipped):**
+- "How much food does a [breed] eat per day?" — breed-aware feeding calculator
+- "When will my puppy stop growing?" — breed-specific growth predictor
+- "Dog travel cost calculator" — flight + hotel + gear bundled
+- "What dog breed fits my apartment + schedule?" — breed matcher
+- "Real dog years" — better than the generic 7×age formula (breed-aware)
+- Senior dog / pregnant dog / puppy life-stage specific tools
+
+**When:** NOT before mid-2026 at earliest. Prerequisites:
+1. Parallax AdSense approved + producing real data
+2. Smart Home phase 1 launched (target ~June 2026)
+3. YouTube channel has > 1,000 subs OR clear product-market fit signal
+4. Eddie explicitly says "ready for project #4"
+
+**Next step when activated:** 45-min research session to pull actual search volumes on 15-20 specific long-tail pet keywords and rank by opportunity. Produces a shortlist of 5 tools to build first.
+
+**Sources (2026-04-24 research):**
+- HammerIO construction calculator suite (saturation evidence)
+- BloggersPassion pet affiliate programs review
+- BlackHatWorld pet-niche-site profitability discussion
+- Coupler.io 20 best niches for affiliate marketing 2026
+
+---
+
 ## Meta notes
 
 - **The list grows; the list also shrinks.** Ideas that look good today may look dumb in 6 months. That's fine. Prune aggressively.
@@ -261,4 +367,4 @@ Exactly right. Queue it, don't force it.
 
 ---
 
-*Last updated: 2026-04-19 by Orion. Add entries freely; Orion will reorganize during quarterly reviews.*
+*Last updated: 2026-05-01 by Orion. Added digital products section (Life-in-Weeks poster, journal, Notion template, courses). Add entries freely; Orion will reorganize during quarterly reviews.*
